@@ -129,11 +129,12 @@ api_cadastro/
 - **Pronto quando:** pontuação salva por usuário e ranking aparece.
 
 ### Etapa 10 — Polimento e entrevista
-- [ ] README com prints/GIF, como rodar, diagrama do fluxo JWT
-- [ ] Revisar segurança: segredo forte, expiração, sem token em log, mensagens de erro genéricas
-- [ ] (Opcional) Dockerfile ou deploy (Render/Vercel)
-- [ ] Nota no diário `minha-progamacao/` com tudo que aprendeu
-- [ ] **Treino de entrevista com o Léo:** explicar o projeto em 2 minutos
+- [x] README com como rodar e diagrama do fluxo JWT (prints/GIF: **pendente, você captura**)
+- [x] Revisar segurança: segredo forte (barrado em produção), expiração, sem token em log, mensagens genéricas, CORS mínimo, auditoria de dependências
+- [ ] (Opcional) Dockerfile ou deploy (Render/Vercel): **não feito**
+- [ ] Nota no diário `minha-progamacao/`: **para você**, depois de estudar (o diário registra o que você mostrou dominar)
+- [ ] **Treino de entrevista com o Léo:** explicar o projeto em 2 minutos (roteiro pronto em [docs/entrevista.md](docs/entrevista.md))
+- 📄 Registro: [docs/etapas/etapa-10-polimento-seguranca.md](docs/etapas/etapa-10-polimento-seguranca.md) · [docs/seguranca.md](docs/seguranca.md)
 - **Pronto quando:** repositório público no GitHub, README bonito e roteiro de fala pronto.
 
 ---

@@ -18,6 +18,7 @@ from app.routers import auth, health, scores, users
 
 @asynccontextmanager
 async def lifespan(_: FastAPI):
+    settings.validar_segredo()  # em produção, chave fraca = a API não sobe
     # Ao subir a API, cria as tabelas que ainda não existem.
     # (Em projeto grande usaríamos migrações com Alembic.)
     Base.metadata.create_all(bind=engine)
@@ -32,12 +33,14 @@ app = FastAPI(
 )
 
 # CORS: o navegador só deixa o front (outra origem) chamar a API se ela permitir.
+# Mínimo necessário: uma origem, só os métodos e cabeçalhos que o front usa, e SEM
+# credenciais (o token vai no cabeçalho Authorization, não em cookie).
 app.add_middleware(
     CORSMiddleware,
     allow_origins=[settings.frontend_origin],
-    allow_credentials=True,
-    allow_methods=["*"],
-    allow_headers=["*"],
+    allow_credentials=False,
+    allow_methods=["GET", "POST"],
+    allow_headers=["Authorization", "Content-Type"],
 )
 
 app.include_router(health.router)
