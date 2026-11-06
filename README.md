@@ -9,7 +9,7 @@ Projeto de estudo full stack: **cadastro e login com JWT** e, depois de logar, u
 | Front | React 19 · Vite · Tailwind CSS · React Router · Axios |
 | Testes | pytest |
 
-> Status: **Etapas 0 a 8 concluídas** (backend com 51 testes; frontend integrado à API com o mini jogo e 26 testes do motor). Falta o placar (Etapa 9) e o polimento (Etapa 10). Andamento em [PLANO.md](PLANO.md); o registro de cada etapa (passo a passo e como foi feito) está em [docs/etapas/](docs/etapas/).
+> Status: **Etapas 0 a 9 concluídas** (backend com 66 testes; frontend com o mini jogo, 26 testes do motor e ranking ligado ao JWT). Falta só o polimento final (Etapa 10). Andamento em [PLANO.md](PLANO.md); o registro de cada etapa (passo a passo e como foi feito) está em [docs/etapas/](docs/etapas/).
 
 ## Como rodar
 
@@ -64,9 +64,9 @@ api_cadastro/
 │   │   ├── core/           ← config.py, security.py (hash de senha e JWT), rate_limit.py (limite de login)
 │   │   ├── schemas.py      ← contrato de entrada/saída (Pydantic)
 │   │   ├── database.py     ← engine, sessão e Base
-│   │   ├── models.py       ← tabelas (User)
+│   │   ├── models.py       ← tabelas (User, Score)
 │   │   ├── deps.py         ← get_db e get_current_user (a "catraca" do JWT)
-│   │   └── routers/        ← health, auth (register/login/refresh), users (/me)
+│   │   └── routers/        ← health, auth (register/login/refresh), users (/me), scores (ranking)
 │   ├── tests/
 │   ├── requirements.txt
 │   └── .env.example
@@ -77,7 +77,7 @@ api_cadastro/
         ├── components/     ← Input, PasswordInput, StrengthMeter, FormAlert, Button, Card, Background, AuthLayout
         ├── lib/            ← cn, validators (regras e força da senha), useForm
         ├── game/           ← engine.js (regras, testada), render.js (canvas)
-        ├── pages/          ← uma tela por rota
+        ├── pages/          ← uma tela por rota (Login, Cadastro, Jogo, Status, NotFound)
         └── index.css       ← tokens de design (cores, fonte)
 ```
 

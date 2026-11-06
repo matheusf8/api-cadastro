@@ -19,7 +19,7 @@ const Coracao = ({ cheio }) => (
 const TECLAS_POR_KEY = { ' ': 'Space', a: 'KeyA', A: 'KeyA', d: 'KeyD', D: 'KeyD', p: 'KeyP', P: 'KeyP' }
 const tecla = (e) => e.code || TECLAS_POR_KEY[e.key] || e.key
 
-export default function Game({ onGameOver }) {
+export default function Game({ onGameOver, fimExtra }) {
   const canvasRef = useRef(null)
   const jogoRef = useRef(criarJogo())
   const inputRef = useRef({ pointerX: null, dir: 0 })
@@ -182,6 +182,9 @@ export default function Game({ onGameOver }) {
             <div className="max-w-xs px-4 text-center">
               <h2 className="text-3xl font-extrabold tracking-tight">{mensagem.titulo}</h2>
               <p className="mt-2 text-sm text-slate-300">{mensagem.texto}</p>
+              {hud.status === 'over' && fimExtra && (
+                <p className="mt-2 text-sm font-semibold text-accent-2">{fimExtra}</p>
+              )}
               <Button className="mt-5" onClick={acao}>
                 {mensagem.botao}
               </Button>

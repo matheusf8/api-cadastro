@@ -59,6 +59,39 @@ class AccessToken(BaseModel):
     token_type: str = "bearer"
 
 
+# Teto de pontos aceito por partida. O jogo roda no navegador, então o servidor NÃO
+# consegue provar que a pontuação é honesta; o teto só barra valores absurdos.
+MAX_PONTOS = 200_000
+
+
+class ScoreCreate(BaseModel):
+    """Corpo de POST /scores. Repare: NÃO tem user_id (o dono vem do token)."""
+
+    pontos: int = Field(ge=0, le=MAX_PONTOS)
+
+
+class ScoreOut(BaseModel):
+    model_config = ConfigDict(from_attributes=True)
+
+    id: int
+    pontos: int
+    criado_em: datetime
+
+
+class RankingItem(BaseModel):
+    """Linha do ranking. Só o NOME aparece, nunca o e-mail (privacidade)."""
+
+    posicao: int
+    nome: str
+    pontos: int
+    voce: bool  # esta linha é o próprio usuário que pediu o ranking?
+
+
+class MeusPontos(BaseModel):
+    recorde: int
+    partidas: int
+
+
 class UserPublic(BaseModel):
     """O que a API devolve sobre um usuário. Repare: NÃO há campo de senha."""
 

@@ -2,8 +2,8 @@
 
 from datetime import datetime, timezone
 
-from sqlalchemy import DateTime, String
-from sqlalchemy.orm import Mapped, mapped_column
+from sqlalchemy import DateTime, ForeignKey, String
+from sqlalchemy.orm import Mapped, mapped_column, relationship
 
 from app.database import Base
 
@@ -24,5 +24,24 @@ class User(Base):
     senha_hash: Mapped[str] = mapped_column(String(255))
     criado_em: Mapped[datetime] = mapped_column(DateTime(timezone=True), default=_agora)
 
+    # 1 usuário -> N pontuações. Apagar o usuário apaga as pontuações dele.
+    scores: Mapped[list["Score"]] = relationship(
+        back_populates="user", cascade="all, delete-orphan"
+    )
+
     def __repr__(self) -> str:
         return f"<User id={self.id} email={self.email!r}>"
+
+
+class Score(Base):
+    """Uma partida terminada: quantos pontos e de quem."""
+
+    __tablename__ = "scores"
+
+    id: Mapped[int] = mapped_column(primary_key=True)
+    # Chave estrangeira: aponta para users.id. index=True acelera "pontos do usuário X".
+    user_id: Mapped[int] = mapped_column(ForeignKey("users.id", ondelete="CASCADE"), index=True)
+    pontos: Mapped[int] = mapped_column(index=True)  # index: o ranking ordena por pontos
+    criado_em: Mapped[datetime] = mapped_column(DateTime(timezone=True), default=_agora)
+
+    user: Mapped[User] = relationship(back_populates="scores")

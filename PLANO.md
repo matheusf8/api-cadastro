@@ -121,9 +121,10 @@ api_cadastro/
 - **Pronto quando:** dá para jogar do início ao game over a 60 fps sem vazamento de loop.
 
 ### Etapa 9 — Placar ligado ao JWT
-- [ ] Modelo `Score` (user_id, pontos, criado_em)
-- [ ] `POST /scores` (protegido) e `GET /scores/top` (ranking top 10 com nome)
-- [ ] Mostrar ranking e "seu recorde" ao lado do jogo; header com nome do usuário e botão sair
+- [x] Modelo `Score` (user_id, pontos, criado_em)
+- [x] `POST /scores` (protegido), `GET /scores/top` (top 10 com nome) e `GET /scores/me`
+- [x] Mostrar ranking e "seu recorde" ao lado do jogo; header com nome do usuário e botão sair
+- 📄 Registro: [docs/etapas/etapa-09-placar-jwt.md](docs/etapas/etapa-09-placar-jwt.md)
 - **Aprende:** relacionamento 1:N, rota protegida usando o usuário do token (nunca confiar em `user_id` vindo do body).
 - **Pronto quando:** pontuação salva por usuário e ranking aparece.
 
