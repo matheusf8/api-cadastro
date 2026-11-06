@@ -18,5 +18,6 @@ Registro do **porquê** de cada escolha. É o material para responder "por que v
 | 12 | **Monorepo** (`backend/` + `frontend/`) | Um repositório conta a história completa do projeto. | Repositórios separados em times grandes. |
 | 13 | **Estrutura em camadas no back** | Rotas finas, regra em módulos próprios: fácil de testar e crescer. | Tudo em `main.py` (rápido, mas não escala). |
 
-## Em aberto (decidir na Etapa 7)
-Onde guardar o token no front: memória, `localStorage` ou cookie `httpOnly`. Cada um troca risco de XSS por risco de CSRF. Será discutido com o Léo antes de implementar.
+| 14 | **Access em memória + refresh em `localStorage`** (Etapa 7) | O access (curto) nunca fica em disco; o refresh persiste para manter o login ao recarregar. | Cookie `httpOnly` + `SameSite` para o refresh: elimina o risco de XSS, mas exige a API setar o cookie e tratar CSRF. É a principal melhoria planejada. |
+| 15 | **Interceptor com single-flight** | Renova o token uma vez só, mesmo com várias requisições falhando juntas. | Renovar de forma proativa por timer antes de expirar. |
+| 16 | **Context API** para autenticação | Estado global simples, sem dependência extra. | Zustand/Redux em app maior. |

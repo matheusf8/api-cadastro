@@ -101,10 +101,11 @@ api_cadastro/
 - **Pronto quando:** telas bonitas e funcionais ainda sem API (dados mockados).
 
 ### Etapa 7 — Integrar front com a API
-- [ ] Cliente HTTP (axios ou fetch) com `baseURL` em variável de ambiente
-- [ ] `AuthContext`: guarda usuário/token, funções `login`, `register`, `logout`
-- [ ] Interceptor: anexa o `Bearer` e, ao receber 401, tenta `/auth/refresh` uma vez
-- [ ] `ProtectedRoute`: sem token, redireciona para `/login`
+- [x] Cliente HTTP (axios) com `baseURL` em variável de ambiente
+- [x] `AuthContext`: guarda usuário/token, funções `login`, `register`, `logout`
+- [x] Interceptor: anexa o `Bearer` e, ao receber 401, tenta `/auth/refresh` uma vez (single-flight)
+- [x] `ProtectedRoute` (e `GuestRoute`): sem token, redireciona para `/login`
+- 📄 Registro: [docs/etapas/etapa-07-integracao-front-api.md](docs/etapas/etapa-07-integracao-front-api.md)
 - **Aprende:** onde guardar token (memória × localStorage × cookie httpOnly: prós, contras e risco de XSS/CSRF), Context API, interceptors.
 - **Pronto quando:** cadastra, loga, recarrega a página e continua logado; logout bloqueia o `/jogo`.
 

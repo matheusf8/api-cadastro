@@ -1,8 +1,8 @@
-// Tela de login (Etapa 6): validação + estados de loading/erro, ainda com servidor SIMULADO.
-// Na Etapa 7, `fakeLogin` troca pela chamada real à API via AuthContext.
+// Tela de login: validação no front + chamada real à API via AuthContext.
 import { useState } from 'react'
 import { Link, useLocation, useNavigate } from 'react-router-dom'
-import { fakeLogin } from '@/api/mock'
+import { mensagemDeErro } from '@/api/errors'
+import { useAuth } from '@/auth/useAuth'
 import AuthLayout from '@/components/AuthLayout'
 import Button from '@/components/Button'
 import FormAlert from '@/components/FormAlert'
@@ -16,6 +16,7 @@ const validators = { email: validarEmail, senha: senhaObrigatoria }
 export default function Login() {
   const navigate = useNavigate()
   const { state } = useLocation()
+  const { login } = useAuth()
   const { values, bind, touchAll, isValid } = useForm({ email: '', senha: '' }, validators)
   const [carregando, setCarregando] = useState(false)
   const [erro, setErro] = useState('')
@@ -28,10 +29,11 @@ export default function Login() {
 
     setCarregando(true)
     try {
-      await fakeLogin(values)
-      navigate('/jogo')
+      await login(values)
+      // Volta para a página que a pessoa tentou abrir (ProtectedRoute), ou vai ao jogo.
+      navigate(state?.from?.pathname ?? '/jogo', { replace: true })
     } catch (err) {
-      setErro(err.message)
+      setErro(mensagemDeErro(err))
     } finally {
       setCarregando(false)
     }

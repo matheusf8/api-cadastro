@@ -54,7 +54,15 @@ Renovar    POST /auth/refresh  + refresh ──▶ novo access
 | `lib/` | Funções utilitárias sem relação com React (ex.: `cn`). |
 | `index.css` | Tokens de design do Tailwind (`@theme`). |
 
-Rotas: `/login`, `/cadastro`, `/jogo` (protegida na Etapa 7), `/status` (diagnóstico) e `*` (404).
+Rotas: `/login` e `/cadastro` (só visitantes), `/jogo` (só logados), `/status` (diagnóstico) e `*` (404).
+
+### Fluxo de sessão no front
+```
+login  ──▶ POST /auth/login ──▶ access em MEMÓRIA, refresh no localStorage ──▶ GET /users/me
+reload ──▶ há refresh? ──▶ GET /users/me (sem access) ──▶ 401 ──▶ interceptor: POST /auth/refresh ──▶ repete /users/me
+logout ──▶ apaga os dois tokens e zera o usuário
+```
+O interceptor do Axios (`api/client.js`) anexa o `Bearer` e renova o access no 401, com uma única renovação mesmo se várias requisições falharem juntas.
 
 Import absoluto: `@/` aponta para `src/` (ex.: `import { api } from '@/api/client'`).
 

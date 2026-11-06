@@ -1,8 +1,8 @@
-// Tela de cadastro (Etapa 6): validação, força da senha e confirmação, servidor SIMULADO.
-// Na Etapa 7, `fakeRegister` troca pela chamada real à API.
+// Tela de cadastro: validação, força da senha e confirmação + chamada real à API.
 import { useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
-import { fakeRegister } from '@/api/mock'
+import { mensagemDeErro } from '@/api/errors'
+import { useAuth } from '@/auth/useAuth'
 import AuthLayout from '@/components/AuthLayout'
 import Button from '@/components/Button'
 import FormAlert from '@/components/FormAlert'
@@ -21,6 +21,7 @@ const validators = {
 
 export default function Cadastro() {
   const navigate = useNavigate()
+  const { register } = useAuth()
   const { values, bind, touchAll, isValid } = useForm(
     { nome: '', email: '', senha: '', confirmar: '' },
     validators,
@@ -36,10 +37,10 @@ export default function Cadastro() {
 
     setCarregando(true)
     try {
-      await fakeRegister(values)
+      await register(values)
       navigate('/login', { state: { cadastrado: true } })
     } catch (err) {
-      setErro(err.message)
+      setErro(mensagemDeErro(err))
     } finally {
       setCarregando(false)
     }
