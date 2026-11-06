@@ -46,13 +46,16 @@ api_cadastro/
 - [x] `git init`, `.gitignore` (venv, node_modules, `.env`, `*.db`)
 - [x] Documentação: `README.md`, `docs/arquitetura.md`, `docs/decisoes.md`, `docs/api.md`
 - [x] `GET /health` + teste + página de status no front provando a comunicação (CORS)
+- 📄 Registro: [docs/etapas/etapa-00-preparacao.md](docs/etapas/etapa-00-preparacao.md)
 - **Aprende:** estrutura de projeto, ambiente virtual, por que `.env` fica fora do Git.
 - **Pronto quando:** `uvicorn` sobe e mostra `/docs`; `npm run dev` mostra a página do Vite.
 
 ### Etapa 1 — Backend base + banco
-- [ ] `config.py` lendo `SECRET_KEY`, `ALGORITHM`, tempos de expiração do `.env`
-- [ ] `database.py` (engine SQLite, sessão, `get_db`)
-- [ ] Modelo `User` (id, nome, email único, senha_hash, criado_em)
+- [x] `config.py` lendo `SECRET_KEY`, `ALGORITHM`, tempos de expiração do `.env`
+- [x] `database.py` (engine SQLite, sessão) e `deps.py` (`get_db`)
+- [x] Modelo `User` (id, nome, email único, senha_hash, criado_em)
+- [x] Testes com banco em memória e `GET /health/db`
+- 📄 Registro: [docs/etapas/etapa-01-backend-banco.md](docs/etapas/etapa-01-backend-banco.md)
 - **Aprende:** ORM, sessão por requisição (injeção de dependência), constraint de unicidade.
 - **Pronto quando:** tabela criada no `app.db`, rota `GET /health` responde.
 

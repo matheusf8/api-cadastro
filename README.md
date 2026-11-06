@@ -9,7 +9,7 @@ Projeto de estudo full stack: **cadastro e login com JWT** e, depois de logar, u
 | Front | React 19 · Vite · Tailwind CSS · React Router · Axios |
 | Testes | pytest |
 
-> Status: **Etapa 0 concluída** (ambiente e arquitetura). Veja o andamento em [PLANO.md](PLANO.md).
+> Status: **Etapas 0 e 1 concluídas**. Andamento em [PLANO.md](PLANO.md); o registro de cada etapa (passo a passo e como foi feito) está em [docs/etapas/](docs/etapas/).
 
 ## Como rodar
 
@@ -51,13 +51,17 @@ api_cadastro/
 ├── docs/
 │   ├── arquitetura.md      ← camadas, pastas e fluxo JWT
 │   ├── decisoes.md         ← por que cada tecnologia (roteiro de entrevista)
-│   └── api.md              ← contrato dos endpoints
+│   ├── api.md              ← contrato dos endpoints
+│   └── etapas/             ← um .md por etapa: passo a passo e como foi feito
 ├── backend/
 │   ├── app/
 │   │   ├── main.py         ← cria o app, CORS, registra routers
 │   │   ├── core/           ← config.py (e, depois, security.py)
+│   │   ├── database.py     ← engine, sessão e Base
+│   │   ├── models.py       ← tabelas (User)
+│   │   ├── deps.py         ← get_db (e, depois, get_current_user)
 │   │   ├── routers/        ← endpoints, um arquivo por assunto
-│   │   └── (database.py, models.py, schemas.py, deps.py  ← Etapas 1 a 3)
+│   │   └── (schemas.py     ← Etapa 2)
 │   ├── tests/
 │   ├── requirements.txt
 │   └── .env.example
