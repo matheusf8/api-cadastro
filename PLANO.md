@@ -68,10 +68,11 @@ api_cadastro/
 - **Pronto quando:** cadastro funciona no `/docs` e a senha no banco aparece como hash.
 
 ### Etapa 3 — Login e JWT ⭐ (etapa principal)
-- [ ] `create_access_token` e `create_refresh_token` (claims `sub`, `exp`, `type`)
-- [ ] `POST /auth/login` (mensagem genérica em erro: não revelar se foi e-mail ou senha)
-- [ ] Dependência `get_current_user` + `GET /users/me` protegido
-- [ ] `POST /auth/refresh`
+- [x] `create_access_token` e `create_refresh_token` (claims `sub`, `exp`, `type`)
+- [x] `POST /auth/login` (mensagem genérica em erro: não revelar se foi e-mail ou senha)
+- [x] Dependência `get_current_user` + `GET /users/me` protegido
+- [x] `POST /auth/refresh`
+- 📄 Registro: [docs/etapas/etapa-03-login-jwt.md](docs/etapas/etapa-03-login-jwt.md)
 - **Aprende:** as 3 partes do JWT (header.payload.signature), assinatura × criptografia, expiração, 401 × 403, abrir um token em jwt.io e ler o payload.
 - **Pronto quando:** `/users/me` dá 401 sem token, 200 com token válido, 401 com token expirado.
 

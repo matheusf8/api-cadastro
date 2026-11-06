@@ -28,6 +28,37 @@ class UserCreate(BaseModel):
         return v.lower()
 
 
+class LoginRequest(BaseModel):
+    """Corpo de POST /auth/login. Sem regras de tamanho: quem erra só recebe 401."""
+
+    email: EmailStr
+    senha: str = Field(max_length=128)
+
+    @field_validator("email")
+    @classmethod
+    def _email_minusculo(cls, v: str) -> str:
+        return v.lower()
+
+
+class TokenPair(BaseModel):
+    """Resposta do login."""
+
+    access_token: str
+    refresh_token: str
+    token_type: str = "bearer"
+
+
+class RefreshRequest(BaseModel):
+    refresh_token: str
+
+
+class AccessToken(BaseModel):
+    """Resposta do refresh: só um novo access."""
+
+    access_token: str
+    token_type: str = "bearer"
+
+
 class UserPublic(BaseModel):
     """O que a API devolve sobre um usuário. Repare: NÃO há campo de senha."""
 
