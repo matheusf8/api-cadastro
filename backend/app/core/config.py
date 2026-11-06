@@ -12,6 +12,9 @@ class Settings(BaseSettings):
     algorithm: str = "HS256"
     access_token_expire_minutes: int = 15
     refresh_token_expire_days: int = 7
+    # Limite de tentativas de login: falhas por (IP + e-mail) dentro da janela.
+    login_max_attempts: int = 5
+    login_window_seconds: int = 60
     database_url: str = "sqlite:///./app.db"
     frontend_origin: str = "http://localhost:5173"
 

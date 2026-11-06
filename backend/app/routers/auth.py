@@ -1,11 +1,12 @@
 """Rotas de autenticação: cadastro, login e renovação do token."""
 
 import jwt
-from fastapi import APIRouter, Depends, HTTPException, status
+from fastapi import APIRouter, Depends, HTTPException, Request, status
 from sqlalchemy import select
 from sqlalchemy.exc import IntegrityError
 from sqlalchemy.orm import Session
 
+from app.core.rate_limit import login_limiter
 from app.core.security import (
     DUMMY_HASH,
     create_access_token,
@@ -67,14 +68,29 @@ def register(dados: UserCreate, db: Session = Depends(get_db)) -> User:
 
 
 @router.post("/login", response_model=TokenPair)
-def login(dados: LoginRequest, db: Session = Depends(get_db)) -> TokenPair:
+def login(
+    dados: LoginRequest, request: Request, db: Session = Depends(get_db)
+) -> TokenPair:
+    # Limite de tentativas: chave = IP + e-mail.
+    chave = f"{request.client.host if request.client else 'desconhecido'}|{dados.email}"
+    espera = login_limiter.retry_after(chave)
+    if espera:
+        raise HTTPException(
+            status_code=status.HTTP_429_TOO_MANY_REQUESTS,
+            detail="Muitas tentativas. Tente novamente em instantes.",
+            headers={"Retry-After": str(espera)},
+        )
+
     user = db.scalar(select(User).where(User.email == dados.email))
 
     # Sempre roda UMA verificação de senha, mesmo se o e-mail não existe, para o
     # tempo de resposta não revelar quais e-mails estão cadastrados.
     senha_ok = verify_password(dados.senha, user.senha_hash if user else DUMMY_HASH)
     if user is None or not senha_ok:
+        login_limiter.register_failure(chave)
         raise _CREDENCIAIS_INVALIDAS
+
+    login_limiter.reset(chave)
 
     return TokenPair(
         access_token=create_access_token(user.id),

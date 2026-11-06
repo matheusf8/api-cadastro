@@ -77,9 +77,10 @@ api_cadastro/
 - **Pronto quando:** `/users/me` dá 401 sem token, 200 com token válido, 401 com token expirado.
 
 ### Etapa 4 — Testes e segurança do back
-- [ ] pytest: cadastro ok, e-mail duplicado, login ok, senha errada, rota protegida com e sem token, token expirado
-- [ ] CORS liberando só a origem do front
-- [ ] Limite de tentativas de login (rate limit simples)
+- [x] pytest: cadastro ok, e-mail duplicado, login ok, senha errada, rota protegida com e sem token, token expirado
+- [x] CORS liberando só a origem do front (com testes)
+- [x] Limite de tentativas de login (rate limit simples, 429 + Retry-After)
+- 📄 Registro: [docs/etapas/etapa-04-testes-seguranca.md](docs/etapas/etapa-04-testes-seguranca.md)
 - **Aprende:** teste com `TestClient`, banco de teste isolado, o que CORS realmente protege.
 - **Pronto quando:** `pytest` verde.
 

@@ -7,9 +7,18 @@ from sqlalchemy.orm import sessionmaker
 from sqlalchemy.pool import StaticPool
 
 from app import models  # noqa: F401
+from app.core.rate_limit import login_limiter
 from app.database import Base
 from app.deps import get_db
 from app.main import app
+
+
+@pytest.fixture(autouse=True)
+def _zera_limite_de_login():
+    """O limiter vive em memória; sem isso, falhas de um teste vazam para o outro."""
+    login_limiter.clear()
+    yield
+    login_limiter.clear()
 
 
 @pytest.fixture()
