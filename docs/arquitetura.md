@@ -51,7 +51,10 @@ Renovar    POST /auth/refresh  + refresh ──▶ novo access
 | `api/` | `client.js` (Axios) e, depois, funções por assunto (`auth.js`, `scores.js`). |
 | `auth/` | `AuthContext` (quem está logado) e `ProtectedRoute`. |
 | `game/` | Lógica do jogo separada da tela: física, colisão, desenho no canvas. |
+| `lib/` | Funções utilitárias sem relação com React (ex.: `cn`). |
 | `index.css` | Tokens de design do Tailwind (`@theme`). |
+
+Rotas: `/login`, `/cadastro`, `/jogo` (protegida na Etapa 7), `/status` (diagnóstico) e `*` (404).
 
 Import absoluto: `@/` aponta para `src/` (ex.: `import { api } from '@/api/client'`).
 

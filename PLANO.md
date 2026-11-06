@@ -85,8 +85,9 @@ api_cadastro/
 - **Pronto quando:** `pytest` verde.
 
 ### Etapa 5 — Frontend base e design system
-- [ ] Tailwind, fonte moderna, paleta (escura com destaque neon/gradiente), componentes `Input`, `Button`, `Card`
-- [ ] React Router: `/login`, `/cadastro`, `/jogo`
+- [x] Tailwind, fonte moderna, paleta (escura com destaque neon/gradiente), componentes `Input`, `Button`, `Card` (+ `Background`, `AuthLayout`)
+- [x] React Router: `/login`, `/cadastro`, `/jogo` (+ `/status` e 404)
+- 📄 Registro: [docs/etapas/etapa-05-frontend-design-system.md](docs/etapas/etapa-05-frontend-design-system.md)
 - **Aprende:** componentização, roteamento, tokens de design.
 - **Pronto quando:** as 3 rotas navegam e os componentes são reaproveitados.
 
