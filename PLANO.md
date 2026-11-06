@@ -92,10 +92,11 @@ api_cadastro/
 - **Pronto quando:** as 3 rotas navegam e os componentes são reaproveitados.
 
 ### Etapa 6 — Telas de login e cadastro (visual bacana)
-- [ ] Layout dividido ou card central com vidro (glassmorphism) e fundo animado sutil
-- [ ] Validação no front (e-mail, força da senha com barrinha, confirmar senha)
-- [ ] Mostrar/ocultar senha, estados de loading e erro, animações de entrada
-- [ ] Responsivo (celular e desktop) e acessível (labels, foco, contraste)
+- [x] Layout dividido com vidro (glassmorphism) e fundo animado sutil
+- [x] Validação no front (e-mail, força da senha com barrinha, confirmar senha)
+- [x] Mostrar/ocultar senha, estados de loading e erro, animações de entrada
+- [x] Responsivo (celular e desktop) e acessível (labels, foco, `aria-*`)
+- 📄 Registro: [docs/etapas/etapa-06-telas-login-cadastro.md](docs/etapas/etapa-06-telas-login-cadastro.md)
 - **Aprende:** formulários controlados, estado de erro, UX de autenticação.
 - **Pronto quando:** telas bonitas e funcionais ainda sem API (dados mockados).
 

@@ -9,7 +9,7 @@ Projeto de estudo full stack: **cadastro e login com JWT** e, depois de logar, u
 | Front | React 19 · Vite · Tailwind CSS · React Router · Axios |
 | Testes | pytest |
 
-> Status: **Etapas 0 a 5 concluídas** (backend completo com 51 testes; frontend com design system e rotas). Andamento em [PLANO.md](PLANO.md); o registro de cada etapa (passo a passo e como foi feito) está em [docs/etapas/](docs/etapas/).
+> Status: **Etapas 0 a 6 concluídas** (backend completo com 51 testes; frontend com telas de login e cadastro, ainda com servidor simulado). Andamento em [PLANO.md](PLANO.md); o registro de cada etapa (passo a passo e como foi feito) está em [docs/etapas/](docs/etapas/).
 
 ## Como rodar
 
@@ -69,8 +69,8 @@ api_cadastro/
     └── src/
         ├── api/            ← cliente HTTP
         ├── auth/           ← contexto de login e rota protegida
-        ├── components/     ← Input, Button, Card, Background, AuthLayout
-        ├── lib/            ← utilitários (cn)
+        ├── components/     ← Input, PasswordInput, StrengthMeter, FormAlert, Button, Card, Background, AuthLayout
+        ├── lib/            ← cn, validators (regras e força da senha), useForm
         ├── game/           ← lógica e canvas do jogo
         ├── pages/          ← uma tela por rota
         └── index.css       ← tokens de design (cores, fonte)
