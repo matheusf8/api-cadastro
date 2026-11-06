@@ -60,9 +60,10 @@ api_cadastro/
 - **Pronto quando:** tabela criada no `app.db`, rota `GET /health` responde.
 
 ### Etapa 2 — Cadastro
-- [ ] Schemas Pydantic (`UserCreate` com validação de e-mail e senha mínima, `UserPublic` **sem** senha)
-- [ ] `security.py`: `hash_password` e `verify_password`
-- [ ] `POST /auth/register` (409 se e-mail já existe)
+- [x] Schemas Pydantic (`UserCreate` com validação de e-mail e senha mínima, `UserPublic` **sem** senha)
+- [x] `security.py`: `hash_password` e `verify_password`
+- [x] `POST /auth/register` (409 se e-mail já existe)
+- 📄 Registro: [docs/etapas/etapa-02-cadastro.md](docs/etapas/etapa-02-cadastro.md)
 - **Aprende:** hash × criptografia, por que nunca devolver senha, status codes (201, 409, 422).
 - **Pronto quando:** cadastro funciona no `/docs` e a senha no banco aparece como hash.
 

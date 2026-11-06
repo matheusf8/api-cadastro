@@ -13,7 +13,7 @@ from fastapi.middleware.cors import CORSMiddleware
 from app import models  # noqa: F401  (importar registra as tabelas no Base)
 from app.core.config import settings
 from app.database import Base, engine
-from app.routers import health
+from app.routers import auth, health
 
 
 @asynccontextmanager
@@ -41,4 +41,5 @@ app.add_middleware(
 )
 
 app.include_router(health.router)
-# Próximas etapas: app.include_router(auth.router), users.router, scores.router
+app.include_router(auth.router)
+# Próximas etapas: users.router, scores.router

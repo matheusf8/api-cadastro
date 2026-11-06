@@ -8,7 +8,7 @@ Legenda: ✅ pronto · 🕓 planejado (etapa)
 |---|---|---|---|---|---|
 | ✅ | GET | `/health` | não | Checa se a API está de pé | 200 `{"status":"ok"}` |
 | ✅ | GET | `/health/db` | não | Checa a conexão com o banco | 200 `{"status":"ok","database":"conectado"}` |
-| 🕓 E2 | POST | `/auth/register` | não | Cria usuário | 201, 409 e-mail já existe, 422 dados inválidos |
+| ✅ | POST | `/auth/register` | não | Cria usuário. Corpo: `{nome, email, senha}` (senha 8–128). Resposta: `{id, nome, email, criado_em}` | 201, 409 e-mail já existe, 422 dados inválidos |
 | 🕓 E3 | POST | `/auth/login` | não | Devolve access + refresh token | 200, 401 credenciais inválidas |
 | 🕓 E3 | POST | `/auth/refresh` | refresh token | Novo access token | 200, 401 |
 | 🕓 E3 | GET | `/users/me` | Bearer | Dados do usuário logado | 200, 401 |
