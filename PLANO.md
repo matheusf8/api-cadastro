@@ -110,11 +110,13 @@ api_cadastro/
 - **Pronto quando:** cadastra, loga, recarrega a página e continua logado; logout bloqueia o `/jogo`.
 
 ### Etapa 8 — Mini jogo da bolinha 🎮
-- [ ] `<canvas>` com loop de `requestAnimationFrame`
-- [ ] Bola com física simples (velocidade, rebate nas paredes) e raquete controlada por mouse/teclado/toque
-- [ ] Tijolos (opcional, estilo Breakout), vidas, pontuação, game over e reiniciar
-- [ ] Visual: bola com brilho/rastro, partículas ao quebrar tijolo, fundo combinando com o login
-- [ ] Pausar (tecla Espaço) e dificuldade crescente (bola acelera)
+- [x] `<canvas>` com loop de `requestAnimationFrame`
+- [x] Bola com física simples (velocidade, rebate nas paredes) e raquete controlada por mouse/teclado/toque
+- [x] Tijolos (estilo Breakout), vidas, pontuação, game over e reiniciar
+- [x] Visual: bola com brilho/rastro, partículas ao quebrar tijolo, fundo combinando com o login
+- [x] Pausar (Espaço ou P) e dificuldade crescente (bola acelera, níveis)
+- [x] Motor testado com Vitest (26 testes)
+- 📄 Registro: [docs/etapas/etapa-08-mini-jogo.md](docs/etapas/etapa-08-mini-jogo.md)
 - **Aprende:** game loop, colisão retângulo × círculo, `useRef` e `useEffect` para canvas, limpar o loop ao desmontar.
 - **Pronto quando:** dá para jogar do início ao game over a 60 fps sem vazamento de loop.
 

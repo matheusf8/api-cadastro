@@ -1,9 +1,10 @@
-// Tela pós-login (rota protegida). O jogo (canvas) entra na Etapa 8.
+// Tela pós-login (rota protegida): cabeçalho com o usuário + o jogo.
+// O ranking e o salvamento de pontos entram na Etapa 9 (onGameOver já avisa o fim da partida).
 import { useNavigate } from 'react-router-dom'
 import { useAuth } from '@/auth/useAuth'
 import Background from '@/components/Background'
 import Button from '@/components/Button'
-import Card from '@/components/Card'
+import Game from '@/components/Game'
 
 export default function Jogo() {
   const { user, logout } = useAuth()
@@ -33,12 +34,8 @@ export default function Jogo() {
           </Button>
         </div>
       </header>
-      <main className="grid min-h-[70vh] place-items-center px-4">
-        <Card className="max-w-md text-center">
-          <p className="text-5xl">🎮</p>
-          <h1 className="mt-4 text-2xl font-extrabold">O jogo chega na Etapa 8</h1>
-          <p className="mt-2 text-sm text-slate-400">Você está logado como {user.email}.</p>
-        </Card>
+      <main className="flex justify-center px-4 pb-10">
+        <Game />
       </main>
     </>
   )

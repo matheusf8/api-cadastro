@@ -20,4 +20,6 @@ Registro do **porquê** de cada escolha. É o material para responder "por que v
 
 | 14 | **Access em memória + refresh em `localStorage`** (Etapa 7) | O access (curto) nunca fica em disco; o refresh persiste para manter o login ao recarregar. | Cookie `httpOnly` + `SameSite` para o refresh: elimina o risco de XSS, mas exige a API setar o cookie e tratar CSRF. É a principal melhoria planejada. |
 | 15 | **Interceptor com single-flight** | Renova o token uma vez só, mesmo com várias requisições falhando juntas. | Renovar de forma proativa por timer antes de expirar. |
+| 17 | **Motor do jogo separado do React** (`engine.js` puro) | Regras testáveis sem navegador; o desenho e o componente podem mudar sem quebrar a física. | Lógica dentro do componente (mais rápido de escrever, quase impossível de testar). |
+| 18 | **Vitest** só para o motor | A lógica densa (colisão, pontos, níveis) é onde bugs se escondem. | Testar também as telas com Testing Library (melhoria futura). |
 | 16 | **Context API** para autenticação | Estado global simples, sem dependência extra. | Zustand/Redux em app maior. |

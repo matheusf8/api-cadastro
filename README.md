@@ -9,7 +9,7 @@ Projeto de estudo full stack: **cadastro e login com JWT** e, depois de logar, u
 | Front | React 19 · Vite · Tailwind CSS · React Router · Axios |
 | Testes | pytest |
 
-> Status: **Etapas 0 a 7 concluídas** (backend com 51 testes; frontend integrado à API, com sessão persistente e rota protegida). Falta o jogo (Etapas 8 e 9). Andamento em [PLANO.md](PLANO.md); o registro de cada etapa (passo a passo e como foi feito) está em [docs/etapas/](docs/etapas/).
+> Status: **Etapas 0 a 8 concluídas** (backend com 51 testes; frontend integrado à API com o mini jogo e 26 testes do motor). Falta o placar (Etapa 9) e o polimento (Etapa 10). Andamento em [PLANO.md](PLANO.md); o registro de cada etapa (passo a passo e como foi feito) está em [docs/etapas/](docs/etapas/).
 
 ## Como rodar
 
@@ -37,9 +37,14 @@ App em http://localhost:5173 (a página mostra se o backend está online).
 
 ### 3. Testes
 ```powershell
+# backend
 cd backend
 .venv\Scripts\Activate.ps1
 pytest
+
+# frontend (motor do jogo)
+cd ..\frontend
+npm test
 ```
 
 ## Estrutura
@@ -71,7 +76,7 @@ api_cadastro/
         ├── auth/           ← tokenStore, AuthContext, useAuth, ProtectedRoute/GuestRoute
         ├── components/     ← Input, PasswordInput, StrengthMeter, FormAlert, Button, Card, Background, AuthLayout
         ├── lib/            ← cn, validators (regras e força da senha), useForm
-        ├── game/           ← lógica e canvas do jogo
+        ├── game/           ← engine.js (regras, testada), render.js (canvas)
         ├── pages/          ← uma tela por rota
         └── index.css       ← tokens de design (cores, fonte)
 ```
