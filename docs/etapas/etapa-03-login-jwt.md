@@ -76,15 +76,5 @@ Valida o refresh (`type="refresh"`), confere se o usuário ainda existe e devolv
 - **HS256** (chave compartilhada): simples para uma API só. Com vários serviços usaria RS256 (chave pública/privada).
 - A `SECRET_KEY` precisa ser longa e secreta; quem a tem forja tokens.
 
-## Para a entrevista
-- O que é JWT e como é validado **sem consultar o banco**? (confere a assinatura e o `exp`)
-- Por que não colocar dados sensíveis no payload? (é Base64, qualquer um lê)
-- Assinatura × criptografia × hash?
-- Por que access curto + refresh longo?
-- 401 × 403?
-- Por que a mesma mensagem para e-mail e senha errados? E por que o `DUMMY_HASH`?
-- O que é o ataque `alg: none` e como a lista fixa de algoritmos protege?
-- Como invalidar um JWT antes de expirar? (limitação do modelo stateless)
-
 ## Próximo passo
 Etapa 4: testes e segurança do back (CORS testado e limite de tentativas de login).

@@ -64,11 +64,5 @@ Um servidor de teste antigo continuou vivo na porta 8000 e respondeu o primeiro 
 - **Prints e GIF no README**: não foram incluídos (precisam ser capturados por você, no seu monitor).
 - **Nota no diário `minha-progamacao/`**: não foi escrita por mim. O diário registra o que **você** estudou e mostrou; o conteúdo do projeto está em `docs/etapas/` para você levar para lá no seu ritmo, com o status 🆕 ou ⚠️ até você dominar.
 
-## Para a entrevista
-- O que você fez para proteger a API além do JWT? (hash, rate limit, CORS mínimo, erros genéricos, chave forte obrigatória em produção, auditoria)
-- Por que a API recusa subir em produção com chave fraca? (fail fast: melhor falhar do que rodar insegura)
-- Por que remover `allow_credentials` e limitar métodos e cabeçalhos do CORS? (menor privilégio)
-- Quais riscos você conhece no seu próprio projeto? (veja a tabela de riscos que restam)
-
 ## Projeto concluído
 Todas as etapas (0 a 10) estão feitas, documentadas e commitadas. Para treinar a fala: *"Léo, me entreviste sobre o api_cadastro"*.

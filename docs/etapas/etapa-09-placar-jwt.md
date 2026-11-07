@@ -71,15 +71,5 @@ O jogo roda **no navegador**, então o servidor **não consegue provar** que a p
 
 Outros limites: sem paginação nem filtro por período no ranking; empate no ranking desempata por nome.
 
-## Para a entrevista
-- Como a rota `/scores` sabe quem é o usuário **sem receber o id**? (lê do JWT em `get_current_user`)
-- Por que não aceitar `user_id` no corpo da requisição? (qualquer um falsificaria)
-- O que é chave estrangeira e o que faz o `ON DELETE CASCADE`?
-- Como você montou o ranking com um resultado por jogador? (`GROUP BY` + `MAX`)
-- Por que indexar `user_id` e `pontos`?
-- Por que o ranking não devolve e-mail?
-- É possível trapacear? Como mitigaria de verdade? (validação no servidor)
-- O que `dependencies=[...]` no router faz?
-
 ## Próximo passo
 Etapa 10: polimento, README final, revisão de segurança.

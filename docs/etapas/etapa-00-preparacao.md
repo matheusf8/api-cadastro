@@ -65,8 +65,3 @@ npm install -D tailwindcss @tailwindcss/vite
 
 ## Problema encontrado
 O primeiro `npm create vite` gerou um projeto **vanilla TypeScript** em vez de React. Refiz com `npx create-vite@latest ... --template react --no-interactive`.
-
-## Para a entrevista
-- Por que um `.env` e por que ele não vai pro Git?
-- O que é CORS e o que ele protege?
-- Para que serve um ambiente virtual?

@@ -65,13 +65,5 @@ Fluxo da rota:
 - **Cadastro revela se o e-mail existe** (409). É um trade-off comum: melhora a experiência, mas permite descobrir e-mails cadastrados. No **login** (Etapa 3) a mensagem de erro será genérica.
 - Sem confirmação de e-mail (fora de escopo).
 
-## Para a entrevista
-- Qual a diferença entre **hash**, **criptografia** e **assinatura**?
-- Por que usar argon2/bcrypt e não SHA-256 puro? (são lentos de propósito e têm sal, o que dificulta força bruta)
-- O que é o **sal** e por que a mesma senha gera hashes diferentes?
-- Por que o schema de saída não tem senha? (defesa em profundidade: mesmo com bug, o campo não existe na resposta)
-- 409 × 422: quando usar cada um?
-- Por que checar o e-mail no código **e** ter `UNIQUE` no banco? (condição de corrida)
-
 ## Próximo passo
 Etapa 3: login e JWT (a etapa principal de estudo).

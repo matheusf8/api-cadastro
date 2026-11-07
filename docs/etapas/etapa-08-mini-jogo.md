@@ -85,14 +85,5 @@ Observação: não joguei uma partida completa com a raquete movimentada (mouse)
 - O lançamento tem desvio aleatório pequeno; testes injetam o `rng` para ficarem determinísticos.
 - Pontuação ainda **não é salva**: Etapa 9.
 
-## Para a entrevista
-- Como funciona um game loop? Por que `requestAnimationFrame` e não `setInterval`?
-- O que é *delta time* e por que o jogo não pode andar "X pixels por quadro"?
-- Como a colisão círculo × retângulo funciona? O que é *tunneling* e como você evitou?
-- Por que o estado do jogo fica em `useRef` e não em `useState`?
-- O que acontece se você não limpar o loop ao sair da tela? (vazamento: continua rodando e consumindo CPU)
-- Por que separar motor, desenho e componente?
-- Como o ângulo de rebote na raquete dá controle ao jogador?
-
 ## Próximo passo
 Etapa 9: placar ligado ao JWT (`POST /scores`, ranking `GET /scores/top`).

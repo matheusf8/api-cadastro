@@ -62,13 +62,5 @@ Um bloqueado não consegue entrar **nem com a senha certa** até a janela esvazi
 - Atrás de proxy reverso o IP visto seria o do proxy (precisaria ler `X-Forwarded-For` de proxy confiável).
 - `register` e `refresh` ainda sem limite.
 
-## Para a entrevista
-- O que é um ataque de força bruta e como você mitigou?
-- Por que bloquear também a senha certa durante o bloqueio?
-- Por que 429 e para que serve o `Retry-After`?
-- O que o CORS protege de verdade? Ele impede um `curl`?
-- Como você testou o tempo sem esperar 60 segundos? (relógio injetável)
-- Por que o limiter em memória não serve em produção com vários servidores?
-
 ## Próximo passo
 Etapa 5: frontend base e design system (Tailwind, componentes, rotas).

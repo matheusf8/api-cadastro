@@ -71,13 +71,5 @@ Para ver os estados sem backend:
 - **Hook próprio em vez de biblioteca** (React Hook Form): o projeto é de estudo e o hook mostra o conceito. Em projeto real, a biblioteca seria uma boa escolha.
 - **Sem testes automatizados no front** por enquanto; as funções de `validators.js` são puras e seriam o primeiro alvo (Vitest) como melhoria.
 
-## Para a entrevista
-- O que é um componente controlado? Por que o React guarda o valor do campo?
-- Por que validar no front **e** no back?
-- O que é um custom hook e que problema o `useForm` resolve?
-- Como você cuidou de acessibilidade (label, `aria-invalid`, `role="alert"`, foco visível)?
-- Como a bolinha anima sem JavaScript? (keyframes CSS)
-- Por que desativar o botão durante o envio?
-
 ## Próximo passo
 Etapa 7: integrar o front com a API (cliente HTTP, `AuthContext`, interceptors e rota protegida).

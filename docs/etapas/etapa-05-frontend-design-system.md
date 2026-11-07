@@ -63,12 +63,5 @@ Idioma `pt-BR`, título "Rebote · Cadastro", `theme-color` e a fonte Inter via 
 - **Acessibilidade desde já** (label ligada ao campo, foco visível, `aria-*`), mais barato que consertar depois.
 - **`/status` mantida** como ferramenta de diagnóstico do ambiente.
 
-## Para a entrevista
-- Por que componentizar? O que são props?
-- Como funciona o roteamento do React Router e a diferença entre `<a>` e `<Link>`?
-- O que são design tokens e qual a vantagem?
-- Que cuidados de acessibilidade você tomou no `Input`?
-- Por que o botão com `loading` fica desativado? (evita requisições duplicadas)
-
 ## Próximo passo
 Etapa 6: telas de login e cadastro com visual final e validação no front.

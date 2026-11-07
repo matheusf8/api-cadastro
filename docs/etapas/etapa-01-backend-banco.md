@@ -54,12 +54,5 @@ Roda `SELECT 1` pela sessão injetada. Se responder, a conexão com o banco est�
 | Subir `uvicorn` e `curl /health/db` | `{"status":"ok","database":"conectado"}` |
 | Inspecionar `app.db` com `sqlite3` | tabela `users` com as 5 colunas |
 
-## Para a entrevista
-- Qual a diferença entre **model** e **schema**? (tabela × contrato da API)
-- Por que uma sessão por requisição e por que fechar no `finally`?
-- Para que serve o `unique=True` se eu já posso checar o e-mail no código? (a checagem no código tem corrida entre duas requisições; o banco garante)
-- Por que `create_all` não basta em produção? (não migra mudanças; usa-se Alembic)
-- Como o teste evita mexer no banco real? (`dependency_overrides` + SQLite em memória)
-
 ## Próximo passo
 Etapa 2: cadastro (`POST /auth/register`) com schemas Pydantic e hash de senha.

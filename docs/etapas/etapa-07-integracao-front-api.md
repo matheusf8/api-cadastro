@@ -74,13 +74,5 @@ Combinação escolhida: o token mais poderoso por mais tempo (refresh) ainda fic
 - Sem sincronização de logout entre abas.
 - A proteção do `/jogo` no front é só UX; os dados são protegidos pela API.
 
-## Para a entrevista
-- Onde você guarda o token e por quê? Quais os riscos de cada opção (XSS × CSRF)?
-- Como o interceptor renova o token sem o usuário perceber? E se 5 requisições falharem juntas? (single-flight)
-- Por que as rotas `/auth/*` não disparam a renovação?
-- O que é o Context API e por que usar aqui em vez de passar props?
-- A rota protegida do React é segurança? (não: o servidor é quem protege)
-- Como o app restaura a sessão ao recarregar se o access token fica só em memória?
-
 ## Próximo passo
 Etapa 8: o mini jogo da bolinha (canvas, `requestAnimationFrame`, colisão).
