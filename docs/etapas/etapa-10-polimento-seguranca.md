@@ -1,7 +1,7 @@
-# Etapa 10 — Polimento, segurança e entrevista
+# Etapa 10 — Polimento e segurança
 
-**Objetivo:** revisar a segurança, endurecer o que faltava, deixar a documentação pronta para mostrar e preparar a conversa de entrevista.
-**Resultado:** CORS mínimo, barreira contra `SECRET_KEY` fraca em produção, auditoria de dependências, README final com diagrama do fluxo JWT, `docs/seguranca.md` e `docs/entrevista.md`. Backend com **74 testes**.
+**Objetivo:** revisar a segurança, endurecer o que faltava, deixar a documentação pronta para mostrar.
+**Resultado:** CORS mínimo, barreira contra `SECRET_KEY` fraca em produção, auditoria de dependências, README final com diagrama do fluxo JWT, `docs/seguranca.md`. Backend com **74 testes**.
 
 ## Conceitos novos
 | Conceito | Analogia |
@@ -45,7 +45,6 @@ Total do backend: **74**.
 ### 6. Documentação final
 - `README.md` refeito: o que tem, **diagrama de sequência do fluxo JWT** (Mermaid), como rodar, estrutura, índice dos docs e limites.
 - `docs/seguranca.md`: 16 defesas com onde/como foram verificadas e uma tabela de **riscos que restam** com a solução de cada um.
-- `docs/entrevista.md`: pitch de 2 minutos, 26 perguntas com resposta curta e a lista "o que eu melhoraria".
 
 ### 7. Verificação final
 | Checagem | Resultado |
@@ -63,7 +62,7 @@ Um servidor de teste antigo continuou vivo na porta 8000 e respondeu o primeiro 
 ## Fora do que foi feito (de propósito)
 - **Docker/deploy**: era opcional no plano e não foi feito.
 - **Prints e GIF no README**: não foram incluídos (precisam ser capturados por você, no seu monitor).
-- **Nota no diário `minha-progamacao/`**: não foi escrita por mim. O diário registra o que **você** estudou e mostrou; o conteúdo do projeto está em `docs/entrevista.md` e `docs/etapas/` para você levar para lá no seu ritmo, com o status 🆕 ou ⚠️ até você dominar.
+- **Nota no diário `minha-progamacao/`**: não foi escrita por mim. O diário registra o que **você** estudou e mostrou; o conteúdo do projeto está em `docs/etapas/` para você levar para lá no seu ritmo, com o status 🆕 ou ⚠️ até você dominar.
 
 ## Para a entrevista
 - O que você fez para proteger a API além do JWT? (hash, rate limit, CORS mínimo, erros genéricos, chave forte obrigatória em produção, auditoria)

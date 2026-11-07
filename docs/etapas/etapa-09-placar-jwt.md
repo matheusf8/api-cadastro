@@ -82,4 +82,4 @@ Outros limites: sem paginação nem filtro por período no ranking; empate no ra
 - O que `dependencies=[...]` no router faz?
 
 ## Próximo passo
-Etapa 10: polimento, README final, revisão de segurança e roteiro de entrevista.
+Etapa 10: polimento, README final, revisão de segurança.

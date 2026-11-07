@@ -93,7 +93,6 @@ api_cadastro/
 │   ├── decisoes.md          ← por que cada tecnologia (18 decisões)
 │   ├── api.md               ← contrato dos endpoints
 │   ├── seguranca.md         ← revisão de segurança e riscos que restam
-│   ├── entrevista.md        ← pitch de 2 min e perguntas com respostas
 │   └── etapas/              ← um .md por etapa: passo a passo e como foi feito
 ├── backend/
 │   ├── app/
@@ -122,11 +121,11 @@ api_cadastro/
 
 | Quero... | Leia |
 |---|---|
+| rodar o projeto passo a passo | [docs/como-rodar.md](docs/como-rodar.md) |
 | entender as camadas e o fluxo | [docs/arquitetura.md](docs/arquitetura.md) |
 | saber por que escolhi cada coisa | [docs/decisoes.md](docs/decisoes.md) |
 | ver os endpoints | [docs/api.md](docs/api.md) ou `/docs` com a API rodando |
 | ver o que está protegido e o que falta | [docs/seguranca.md](docs/seguranca.md) |
-| treinar para a entrevista | [docs/entrevista.md](docs/entrevista.md) |
 | ver como cada etapa foi feita | [docs/etapas/](docs/etapas/) |
 
 ## Limites conhecidos (e próximos passos)
