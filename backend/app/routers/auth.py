@@ -1,11 +1,14 @@
 """Rotas de autenticação: cadastro, login e renovação do token."""
 
+import hmac
+
 import jwt
 from fastapi import APIRouter, Depends, HTTPException, Request, status
-from sqlalchemy import select
+from sqlalchemy import func, select
 from sqlalchemy.exc import IntegrityError
 from sqlalchemy.orm import Session
 
+from app.core.config import settings
 from app.core.rate_limit import login_limiter
 from app.core.security import (
     DUMMY_HASH,
@@ -44,9 +47,28 @@ _EMAIL_EM_USO = HTTPException(
     status_code=status.HTTP_409_CONFLICT, detail="E-mail já cadastrado"
 )
 
+_CONVITE_INVALIDO = HTTPException(
+    status_code=status.HTTP_403_FORBIDDEN, detail="Código de convite inválido"
+)
+_LIMITE_DE_CONTAS = HTTPException(
+    status_code=status.HTTP_403_FORBIDDEN,
+    detail="Limite de contas atingido. Fale com o dono do jogo.",
+)
+
 
 @router.post("/register", response_model=UserPublic, status_code=status.HTTP_201_CREATED)
 def register(dados: UserCreate, db: Session = Depends(get_db)) -> User:
+    # Cadastro restrito (deploy): confere o código de convite e o teto de contas.
+    # 403 = "entendi o pedido, mas você não tem permissão".
+    if settings.invite_code and not hmac.compare_digest(
+        dados.codigo_convite.strip().encode(), settings.invite_code.encode()
+    ):
+        # compare_digest compara em tempo constante: o tempo de resposta não ajuda
+        # ninguém a adivinhar o código letra por letra.
+        raise _CONVITE_INVALIDO
+    if settings.max_users and db.scalar(select(func.count(User.id))) >= settings.max_users:
+        raise _LIMITE_DE_CONTAS
+
     # 1) Checagem amigável: evita o erro na maioria dos casos.
     if db.scalar(select(User).where(User.email == dados.email)):
         raise _EMAIL_EM_USO

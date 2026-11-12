@@ -8,6 +8,7 @@ import Button from '@/components/Button'
 import FormAlert from '@/components/FormAlert'
 import Input from '@/components/Input'
 import PasswordInput from '@/components/PasswordInput'
+import { AVISO_SERVIDOR_ACORDANDO, useAvisoDemora } from '@/lib/useAvisoDemora'
 import { useForm } from '@/lib/useForm'
 import { senhaObrigatoria, validarEmail } from '@/lib/validators'
 
@@ -20,6 +21,7 @@ export default function Login() {
   const { values, bind, touchAll, isValid } = useForm({ email: '', senha: '' }, validators)
   const [carregando, setCarregando] = useState(false)
   const [erro, setErro] = useState('')
+  const demorando = useAvisoDemora(carregando)
 
   async function enviar(e) {
     e.preventDefault()
@@ -55,6 +57,7 @@ export default function Login() {
       <form className="space-y-5" onSubmit={enviar} noValidate>
         {state?.cadastrado && <FormAlert tipo="sucesso">Conta criada! Entre para continuar.</FormAlert>}
         <FormAlert>{erro}</FormAlert>
+        {demorando && <FormAlert tipo="sucesso">{AVISO_SERVIDOR_ACORDANDO}</FormAlert>}
         <Input
           label="E-mail"
           type="email"

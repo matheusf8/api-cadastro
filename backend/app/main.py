@@ -19,6 +19,7 @@ from app.routers import auth, health, scores, users
 @asynccontextmanager
 async def lifespan(_: FastAPI):
     settings.validar_segredo()  # em produção, chave fraca = a API não sobe
+    settings.avisar_cadastro_aberto()
     # Ao subir a API, cria as tabelas que ainda não existem.
     # (Em projeto grande usaríamos migrações com Alembic.)
     Base.metadata.create_all(bind=engine)

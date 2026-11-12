@@ -12,6 +12,8 @@ class UserCreate(BaseModel):
     email: EmailStr
     # max 128: evita enviar uma "senha" gigante só para gastar CPU no hash.
     senha: str = Field(min_length=8, max_length=128)
+    # Só é conferido quando o servidor tem INVITE_CODE configurado.
+    codigo_convite: str = Field(default="", max_length=64)
 
     @field_validator("nome")
     @classmethod

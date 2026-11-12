@@ -7,6 +7,7 @@ from sqlalchemy.orm import sessionmaker
 from sqlalchemy.pool import StaticPool
 
 from app import models  # noqa: F401
+from app.core.config import settings
 from app.core.rate_limit import login_limiter
 from app.database import Base
 from app.deps import get_db
@@ -19,6 +20,13 @@ def _zera_limite_de_login():
     login_limiter.clear()
     yield
     login_limiter.clear()
+
+
+@pytest.fixture(autouse=True)
+def _cadastro_livre(monkeypatch):
+    """Os testes não dependem do .env real: por padrão, sem convite e sem teto."""
+    monkeypatch.setattr(settings, "invite_code", "")
+    monkeypatch.setattr(settings, "max_users", 0)
 
 
 @pytest.fixture()

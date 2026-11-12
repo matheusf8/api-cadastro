@@ -32,6 +32,8 @@ export const validarConfirmacao = (v, todos) => {
   return ''
 }
 
+export const validarConvite = (v) => (v.trim() ? '' : 'Informe o código de convite')
+
 const ROTULOS = ['Muito fraca', 'Fraca', 'Razoável', 'Boa', 'Forte']
 
 // Pontua de 0 a 4: tamanho, maiúscula+minúscula, número, símbolo.

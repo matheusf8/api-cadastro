@@ -8,7 +8,7 @@ Legenda: ✅ pronto · 🕓 planejado (etapa)
 |---|---|---|---|---|---|
 | ✅ | GET | `/health` | não | Checa se a API está de pé | 200 `{"status":"ok"}` |
 | ✅ | GET | `/health/db` | não | Checa a conexão com o banco | 200 `{"status":"ok","database":"conectado"}` |
-| ✅ | POST | `/auth/register` | não | Cria usuário. Corpo: `{nome, email, senha}` (senha 8–128). Resposta: `{id, nome, email, criado_em}` | 201, 409 e-mail já existe, 422 dados inválidos |
+| ✅ | POST | `/auth/register` | não | Cria usuário. Corpo: `{nome, email, senha, codigo_convite?}` (senha 8–128). O `codigo_convite` só é exigido quando o servidor tem `INVITE_CODE`. Resposta: `{id, nome, email, criado_em}` | 201, 403 convite inválido ou limite de contas, 409 e-mail já existe, 422 dados inválidos |
 | ✅ | POST | `/auth/login` | não | Corpo `{email, senha}`. Devolve `{access_token, refresh_token, token_type}`. Limite: 5 falhas por IP+e-mail a cada 60 s | 200, 401 "E-mail ou senha inválidos" (genérico), 429 + `Retry-After` |
 | ✅ | POST | `/auth/refresh` | refresh token no corpo | Corpo `{refresh_token}`. Devolve `{access_token, token_type}` | 200, 401 |
 | ✅ | GET | `/users/me` | Bearer (access) | Dados do usuário logado | 200, 401 |

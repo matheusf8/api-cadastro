@@ -2,7 +2,7 @@
 
 Projeto full stack de estudo com foco em **autenticação JWT**: a pessoa se **cadastra**, faz **login** e cai num **mini jogo de bolinha (Breakout)** cuja pontuação vai para um **ranking** no banco.
 
-![status](https://img.shields.io/badge/etapas-0%20a%2010%20conclu%C3%ADdas-34d399) ![testes](https://img.shields.io/badge/testes-74%20back%20%C2%B7%2026%20front-7c5cff) ![vulnerabilidades](https://img.shields.io/badge/vulnerabilidades%20conhecidas-0-22d3ee)
+![status](https://img.shields.io/badge/etapas-0%20a%2010%20conclu%C3%ADdas-34d399) ![testes](https://img.shields.io/badge/testes-84%20back%20%C2%B7%2026%20front-7c5cff) ![vulnerabilidades](https://img.shields.io/badge/vulnerabilidades%20conhecidas-0-22d3ee)
 
 | Camada | Tecnologia |
 |---|---|
@@ -10,7 +10,7 @@ Projeto full stack de estudo com foco em **autenticação JWT**: a pessoa se **c
 | Autenticação | JWT (PyJWT) com access + refresh · hash de senha argon2 (pwdlib) |
 | Front | React 19 · Vite · Tailwind CSS 4 · React Router · Axios |
 | Jogo | Canvas puro + `requestAnimationFrame` (sem biblioteca de jogo) |
-| Testes | pytest (74) · Vitest (26, motor do jogo) |
+| Testes | pytest (84) · Vitest (26, motor do jogo) |
 
 ## O que tem
 
@@ -90,7 +90,7 @@ api_cadastro/
 ├── PLANO.md                 ← etapas e checklist (fonte da verdade)
 ├── docs/
 │   ├── arquitetura.md       ← camadas, pastas e fluxo de sessão
-│   ├── decisoes.md          ← por que cada tecnologia (18 decisões)
+│   ├── decisoes.md          ← por que cada tecnologia (23 decisões)
 │   ├── api.md               ← contrato dos endpoints
 │   ├── seguranca.md         ← revisão de segurança e riscos que restam
 │   └── etapas/              ← um .md por etapa: passo a passo e como foi feito
@@ -103,7 +103,7 @@ api_cadastro/
 │   │   ├── models.py        ← tabelas (User, Score)
 │   │   ├── deps.py          ← get_db e get_current_user (a "catraca" do JWT)
 │   │   └── routers/         ← health, auth, users, scores
-│   ├── tests/               ← 74 testes
+│   ├── tests/               ← 84 testes
 │   ├── requirements.txt
 │   └── .env.example
 └── frontend/
@@ -121,6 +121,7 @@ api_cadastro/
 
 | Quero... | Leia |
 |---|---|
+| colocar no ar (deploy) | [PLANO-DEPLOY.md](PLANO-DEPLOY.md) |
 | rodar o projeto passo a passo | [docs/como-rodar.md](docs/como-rodar.md) |
 | entender as camadas e o fluxo | [docs/arquitetura.md](docs/arquitetura.md) |
 | saber por que escolhi cada coisa | [docs/decisoes.md](docs/decisoes.md) |
@@ -135,4 +136,4 @@ api_cadastro/
 - Rate limit em memória e só no login → Redis e limite em outras rotas.
 - SQLite + `create_all` → Postgres + Alembic.
 - Sem recuperação de senha nem confirmação de e-mail.
-- Sem Docker/deploy ainda.
+- Deploy em andamento (Vercel + Render + Neon): veja [PLANO-DEPLOY.md](PLANO-DEPLOY.md). Sem Docker ainda.

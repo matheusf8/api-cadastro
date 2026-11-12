@@ -9,25 +9,38 @@ import FormAlert from '@/components/FormAlert'
 import Input from '@/components/Input'
 import PasswordInput from '@/components/PasswordInput'
 import StrengthMeter from '@/components/StrengthMeter'
+import { AVISO_SERVIDOR_ACORDANDO, useAvisoDemora } from '@/lib/useAvisoDemora'
 import { useForm } from '@/lib/useForm'
-import { validarConfirmacao, validarEmail, validarNome, validarSenha } from '@/lib/validators'
+import {
+  validarConfirmacao,
+  validarConvite,
+  validarEmail,
+  validarNome,
+  validarSenha,
+} from '@/lib/validators'
+
+// Em produção o cadastro é só para convidados: a API exige o código (INVITE_CODE).
+// Esta flag só decide se o campo APARECE; quem confere de verdade é o servidor.
+const EXIGE_CONVITE = import.meta.env.VITE_EXIGE_CONVITE === 'true'
 
 const validators = {
   nome: validarNome,
   email: validarEmail,
   senha: validarSenha,
   confirmar: validarConfirmacao,
+  ...(EXIGE_CONVITE && { convite: validarConvite }),
 }
 
 export default function Cadastro() {
   const navigate = useNavigate()
   const { register } = useAuth()
   const { values, bind, touchAll, isValid } = useForm(
-    { nome: '', email: '', senha: '', confirmar: '' },
+    { nome: '', email: '', senha: '', confirmar: '', convite: '' },
     validators,
   )
   const [carregando, setCarregando] = useState(false)
   const [erro, setErro] = useState('')
+  const demorando = useAvisoDemora(carregando)
 
   async function enviar(e) {
     e.preventDefault()
@@ -61,6 +74,7 @@ export default function Cadastro() {
     >
       <form className="space-y-5" onSubmit={enviar} noValidate>
         <FormAlert>{erro}</FormAlert>
+        {demorando && <FormAlert tipo="sucesso">{AVISO_SERVIDOR_ACORDANDO}</FormAlert>}
         <Input label="Nome" placeholder="Seu nome" autoComplete="name" {...bind('nome')} />
         <Input
           label="E-mail"
@@ -84,6 +98,14 @@ export default function Cadastro() {
           autoComplete="new-password"
           {...bind('confirmar')}
         />
+        {EXIGE_CONVITE && (
+          <Input
+            label="Código de convite"
+            placeholder="Quem te convidou tem o código"
+            autoComplete="off"
+            {...bind('convite')}
+          />
+        )}
         <Button type="submit" loading={carregando} className="w-full">
           {carregando ? 'Criando...' : 'Criar conta'}
         </Button>

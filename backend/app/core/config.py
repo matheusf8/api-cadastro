@@ -23,6 +23,11 @@ class Settings(BaseSettings):
     login_window_seconds: int = 60
     database_url: str = "sqlite:///./app.db"
     frontend_origin: str = "http://localhost:5173"
+    # Cadastro restrito: se preenchido, só cria conta quem informar este código.
+    # Vazio = cadastro livre (bom para estudar localmente).
+    invite_code: str = ""
+    # Teto de contas. 0 = sem limite.
+    max_users: int = 0
 
     model_config = SettingsConfigDict(env_file=".env", extra="ignore")
 
@@ -40,6 +45,11 @@ class Settings(BaseSettings):
         if self.environment == "production":
             raise RuntimeError(aviso)  # recusa subir: melhor falhar do que rodar inseguro
         log.warning(aviso)
+
+    def avisar_cadastro_aberto(self) -> None:
+        """Em produção sem código de convite, qualquer pessoa com o link cria conta."""
+        if self.environment == "production" and not self.invite_code:
+            log.warning("INVITE_CODE vazio em produção: o cadastro está aberto a qualquer pessoa.")
 
 
 settings = Settings()
