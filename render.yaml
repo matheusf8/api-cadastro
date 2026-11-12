@@ -1,0 +1,29 @@
+# Blueprint do Render: descreve o serviço da API para ser criado com um clique.
+# Valores secretos NÃO ficam aqui (o repositório é público):
+#   - SECRET_KEY: o Render gera sozinho (generateValue).
+#   - DATABASE_URL e INVITE_CODE: você cola no painel (sync: false).
+services:
+  - type: web
+    name: rebote-api
+    runtime: python
+    plan: free
+    region: ohio # mesma região do banco no Neon (AWS us-east-2), menos latência
+    rootDir: backend
+    buildCommand: pip install -r requirements.txt
+    startCommand: uvicorn app.main:app --host 0.0.0.0 --port $PORT
+    healthCheckPath: /health
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.12.10
+      - key: ENVIRONMENT
+        value: production
+      - key: SECRET_KEY
+        generateValue: true
+      - key: DATABASE_URL
+        sync: false
+      - key: INVITE_CODE
+        sync: false
+      - key: MAX_USERS
+        value: "5"
+      - key: FRONTEND_ORIGIN
+        value: https://rebote-six.vercel.app
