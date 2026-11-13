@@ -1,8 +1,10 @@
 # 🎮 Rebote · API Cadastro
 
+**🌐 No ar:** https://rebote-six.vercel.app (cadastro só com código de convite)
+
 Projeto full stack de estudo com foco em **autenticação JWT**: a pessoa se **cadastra**, faz **login** e cai num **mini jogo de bolinha (Breakout)** cuja pontuação vai para um **ranking** no banco.
 
-![status](https://img.shields.io/badge/etapas-0%20a%2010%20conclu%C3%ADdas-34d399) ![testes](https://img.shields.io/badge/testes-84%20back%20%C2%B7%2026%20front-7c5cff) ![vulnerabilidades](https://img.shields.io/badge/vulnerabilidades%20conhecidas-0-22d3ee)
+![status](https://img.shields.io/badge/etapas-0%20a%2012%20conclu%C3%ADdas-34d399) ![testes](https://img.shields.io/badge/testes-84%20back%20%C2%B7%2026%20front-7c5cff) ![vulnerabilidades](https://img.shields.io/badge/vulnerabilidades%20conhecidas-0-22d3ee)
 
 | Camada | Tecnologia |
 |---|---|
@@ -82,6 +84,16 @@ cd ..\frontend
 npm test
 ```
 
+## Deploy
+
+| Peça | Onde | Observação |
+|---|---|---|
+| Site (React) | Vercel | `https://rebote-six.vercel.app`, pasta `frontend` |
+| API (FastAPI) | Render (grátis) | `https://rebote-api.onrender.com`, descrita em `render.yaml` |
+| Banco | Neon (Postgres grátis) | local continua em SQLite |
+
+Variáveis da API (no painel do Render, nunca no GitHub): `DATABASE_URL`, `SECRET_KEY` (gerada pelo Render), `INVITE_CODE`, `MAX_USERS=5`, `FRONTEND_ORIGIN`, `ENVIRONMENT=production`. Variáveis do site (Vercel): `VITE_API_URL`, `VITE_EXIGE_CONVITE=true`. Passo a passo em [docs/etapas/etapa-12-deploy-no-ar.md](docs/etapas/etapa-12-deploy-no-ar.md).
+
 ## Estrutura
 
 ```
@@ -136,4 +148,4 @@ api_cadastro/
 - Rate limit em memória e só no login → Redis e limite em outras rotas.
 - SQLite + `create_all` → Postgres + Alembic.
 - Sem recuperação de senha nem confirmação de e-mail.
-- Deploy em andamento (Vercel + Render + Neon): veja [PLANO-DEPLOY.md](PLANO-DEPLOY.md). Sem Docker ainda.
+- Render grátis dorme após 15 min sem uso: o primeiro acesso demora cerca de 1 minuto. Sem Docker ainda.

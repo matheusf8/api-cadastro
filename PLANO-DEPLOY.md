@@ -6,7 +6,7 @@
 
 ```
  Navegador (celular / PC)
-        │  https://rebote.vercel.app
+        │  https://rebote-six.vercel.app
         ▼
  ┌──────────────┐   HTTPS + JWT    ┌──────────────┐     SQL      ┌──────────────┐
  │ Frontend     │ ───────────────► │ Backend      │ ───────────► │ Banco        │
@@ -63,29 +63,29 @@
 - 📄 Registro das etapas D1 a D3: [docs/etapas/etapa-11-preparacao-deploy.md](docs/etapas/etapa-11-preparacao-deploy.md)
 
 ### Etapa D4 — Criar os serviços (você faz o login, eu guio)
-- [ ] **Neon:** criar projeto `rebote` e copiar a connection string
-- [ ] **Render:** novo Web Service a partir do repo `api-cadastro`, pasta `backend`
+- [x] **Neon:** criar projeto `rebote` e copiar a connection string
+- [x] **Render:** novo Web Service a partir do repo `api-cadastro`, pasta `backend`
   - Build: `pip install -r requirements.txt`
   - Start: `uvicorn app.main:app --host 0.0.0.0 --port $PORT`
   - Variáveis: `PYTHON_VERSION=3.12.10`, `ENVIRONMENT=production`, `SECRET_KEY` (nova, forte), `DATABASE_URL` (Neon), `FRONTEND_ORIGIN` (URL da Vercel), `INVITE_CODE`, `MAX_USERS=5`
-- [ ] **Vercel:** importar o repo, pasta `frontend`, variáveis `VITE_API_URL` e `VITE_EXIGE_CONVITE=true`
-- [ ] Voltar no Render e acertar o `FRONTEND_ORIGIN` com a URL final da Vercel
+- [x] **Vercel:** importar o repo, pasta `frontend`, variáveis `VITE_API_URL` e `VITE_EXIGE_CONVITE=true`
+- [x] Voltar no Render e acertar (já nasceu certo pelo `render.yaml`) o `FRONTEND_ORIGIN` com a URL final da Vercel
 - **Pronto quando:** os três painéis mostram "deploy ok".
 
 > Segredos (`SECRET_KEY`, connection string, código de convite) vão **só** nos painéis do Render/Vercel. Nunca em arquivo nem no GitHub.
 
 ### Etapa D5 — Testar em produção
-- [ ] `/health` e `/health/db` respondendo na URL do Render
-- [ ] Cadastro com código, login, jogar, pontuação no ranking
+- [x] `/health` e `/health/db` respondendo na URL do Render
+- [ ] Cadastro com código, login, jogar, pontuação no ranking (falta: feito pelo Matheus e pela esposa)
 - [ ] Abrir no **celular** (a esposa provavelmente vai jogar por lá)
-- [ ] Cadastro sem código é recusado; preflight de outra origem é recusado (CORS)
+- [x] Cadastro sem código e com código errado são recusados (403); CORS só libera a origem da Vercel
 - [ ] API recusa subir com `SECRET_KEY` fraca (já existe, só confirmar)
 - **Pronto quando:** você e sua esposa jogam de aparelhos diferentes e aparecem no mesmo ranking.
 
 ### Etapa D6 — Documentar
-- [ ] README: link do site no ar e seção "Deploy" (arquitetura acima + variáveis)
-- [ ] `docs/etapas/etapa-11-deploy.md` com o passo a passo e o que deu errado
-- [ ] `docs/decisoes.md`: decisões 21+ (Neon, convite, limite)
+- [x] README: link do site no ar e seção "Deploy" (arquitetura acima + variáveis)
+- [x] `docs/etapas/etapa-12-deploy-no-ar.md` com o passo a passo e o que deu errado
+- [x] `docs/decisoes.md`: decisões 21+ (Neon, convite, limite)
 - **Pronto quando:** alguém lendo o README entende onde cada peça roda.
 
 ### Etapa D7 (opcional) — Docker
